@@ -1,0 +1,34 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="@string/weather_location">
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="USE_DEVICE_LOCATION"
+            app:summary="@string/use_dev_loc_sum"
+            app:title="@string/use_dev_loc"
+            app:disableDependentsState="true"/>
+
+        <EditTextPreference
+            app:defaultValue="London"
+            app:key="CUSTOM_LOCATION"
+            app:title="@string/location"
+            app:summary="The location for which the weather is fetched"
+            app:dependency="USE_DEVICE_LOCATION"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Units">
+
+        <ListPreference
+            app:key="UNIT_SYSTEM"
+            app:title="@string/unit_sys"
+            android:summary="%s"
+            app:defaultValue="METRIC"
+            android:entries="@array/unitSystemEntries"
+            android:entryValues="@array/unitSystemValues"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Weather Forecast</string>
+    <string name="settings">Settings</string>
+    <string name="_7_days">7 Days</string>
+    <string name="today">Today</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="loading">Loading</string>
+    <string name="weather_condition">weather condition</string>
+    <string name="weather_location">Weather Location</string>
+    <string name="use_dev_loc">Use device location</string>
+    <string name="location">Location</string>
+    <string name="use_dev_loc_sum">Allow the app to get your location</string>
+    <string name="unit_sys">Unit system</string>
+</resources>
