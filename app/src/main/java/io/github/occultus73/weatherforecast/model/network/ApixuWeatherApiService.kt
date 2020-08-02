@@ -5,6 +5,7 @@ import io.github.occultus73.weatherforecast.model.network.response.CurrentWeathe
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -39,10 +40,14 @@ interface ApixuWeatherApiService {
 
                 return@Interceptor chain.proceed(request)
             }
+            // add logger to okHttpClient so we can see what it is doing wrong.
+            val logging = HttpLoggingInterceptor()
+            logging.setLevel(HttpLoggingInterceptor.Level.BASIC)
 
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(requestInterceptor)
                 .addInterceptor(connectivityInterceptor)
+                .addInterceptor(logging)
                 .build()
 
             return Retrofit.Builder()

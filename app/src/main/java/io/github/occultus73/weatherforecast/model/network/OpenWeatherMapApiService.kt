@@ -17,8 +17,8 @@ interface OpenWeatherMapApiService {
     // https://api.openweathermap.org/data/2.5/onecall?lat=51.283791&lon=-0.0831033&appid=1d984e37de16d449047be61caaf7e07d&units=metric
     @GET("data/2.5/onecall")
     fun getCurrentWeather(
-        @Query("lat") latitude: Float,
-        @Query("lon") longitude: Float,
+        @Query("lat") latitude: Double,
+        @Query("lon") longitude: Double,
         @Query("units") units: String
     ): Deferred<OneCallResponse>
 

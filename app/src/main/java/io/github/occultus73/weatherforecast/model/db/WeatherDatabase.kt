@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import io.github.occultus73.weatherforecast.model.db.entity.CurrentWeatherEntry
 
-@Database(entities = [CurrentWeatherEntry::class], version = 2)
+@Database(entities = [CurrentWeatherEntry::class], version = 3)
 abstract class WeatherDatabase : RoomDatabase() {
     abstract fun currentWeatherDao(): CurrentWeatherDao
 

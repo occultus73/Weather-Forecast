@@ -18,7 +18,7 @@ data class CurrentWeatherEntry(
     val feelsLike: Double,
     val humidity: Int,
     val pressure: Int,
-    val rain: Int = 0,
+    val rain: Float = 0.0f,
     val sunrise: Int,
     val sunset: Int,
     val temp: Double,

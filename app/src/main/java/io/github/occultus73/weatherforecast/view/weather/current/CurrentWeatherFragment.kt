@@ -45,7 +45,7 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
         currentWeather.observe(viewLifecycleOwner, Observer {
             if(it == null) return@Observer
             group_loading.visibility = View.GONE
-            updateLocation("Red Cottage")
+            updateLocation(it.apixuWeatherResponse?.location?.name?: "")
             updateDateToToday()
             updateTemperatures(it.temp, it.feelsLike)
             updateCondition(it.weather[0].description)
@@ -90,7 +90,7 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
         textView_condition.text = condition
     }
 
-    private fun updatePrecipitation(precipitationVolume: Int) {
+    private fun updatePrecipitation(precipitationVolume: Float) {
         val unitAbbreviation = chooseLocalizedUnitAbbreviation("mm", "mm", "mm")
 
         textView_precipitation.text = "Precipitation: $precipitationVolume $unitAbbreviation"

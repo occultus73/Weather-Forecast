@@ -4,6 +4,8 @@ import android.app.Application
 import com.jakewharton.threetenabp.AndroidThreeTen
 import io.github.occultus73.weatherforecast.model.db.WeatherDatabase
 import io.github.occultus73.weatherforecast.model.network.*
+import io.github.occultus73.weatherforecast.model.provider.LocationProvider
+import io.github.occultus73.weatherforecast.model.provider.LocationProviderImpl
 import io.github.occultus73.weatherforecast.model.provider.UnitProvider
 import io.github.occultus73.weatherforecast.model.provider.UnitProviderImpl
 import io.github.occultus73.weatherforecast.model.repository.WeatherRepository
@@ -21,6 +23,9 @@ class WeatherApplication() : Application(), KodeinAware {
     override val kodein: Kodein = Kodein.lazy {
         import(androidXModule(this@WeatherApplication))
 
+        // Location Provider
+        bind<LocationProvider>() with singleton { LocationProviderImpl() }
+
         // Room Database Instances
         bind() from singleton { WeatherDatabase(instance()) }
         bind() from singleton { instance<WeatherDatabase>().currentWeatherDao() }
@@ -29,10 +34,10 @@ class WeatherApplication() : Application(), KodeinAware {
         bind<ConnectivityInterceptor>() with singleton { ConnectivityInterceptorImpl(instance()) }
         bind() from singleton { OpenWeatherMapApiService(instance()) }
         bind() from singleton { ApixuWeatherApiService(instance())}
-        bind<WeatherNetworkDataSource>() with singleton { WeatherNetworkDataSourceImpl(instance(), instance()) }
+        bind<WeatherNetworkDataSource>() with singleton { WeatherNetworkDataSourceImpl(instance(), instance(), instance()) }
 
         // Repository that manages Room Database & Retrofit API
-        bind<WeatherRepository>() with singleton { WeatherRepositoryImpl(instance(), instance())}
+        bind<WeatherRepository>() with singleton { WeatherRepositoryImpl(instance(), instance(), instance())}
 
         // ViewModel for current weather fragment
         bind<UnitProvider>() with singleton { UnitProviderImpl(instance()) }
